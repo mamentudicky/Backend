@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX - Load, Get, Post, dan Ajax</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>AJAX dengan jQuery dan PHP</h2>
+
+    <!-- Load -->
+    <button id="loadData">Load Data</button>
+    <div id="loadResult"></div>
+
+    <!-- Get -->
+    <button id="getData">GET Data</button>
+    <div id="getResult"></div>
+
+    <!-- Post -->
+    <input type="text" id="nameInput" placeholder="Masukkan Nama">
+    <button id="postData">POST Data</button>
+    <div id="postResult"></div>
+
+    <!-- Ajax -->
+    <input type="email" id="emailInput" placeholder="Masukkan Email">
+    <button id="ajaxData">AJAX Data</button>
+    <div id="ajaxResult"></div>
+
+    <script>
+        $(document).ready(function(){
+            // Metode Load
+            $("#loadData").click(function(){
+                $("#loadResult").load("load_data.php");
+            });
+
+            // Metode GET
+            $("#getData").click(function(){
+                $.get("get_data.php", function(data){
+                    $("#getResult").html(data);
+                });
+            });
+
+            // Metode POST
+            $("#postData").click(function(){
+                let name = $("#nameInput").val();
+                $.post("post_data.php", { name: name }, function(response){
+                    $("#postResult").html(response);
+                });
+            });
+
+            // Metode AJAX
+            $("#ajaxData").click(function(){
+                let email = $("#emailInput").val();
+                $.ajax({
+                    url: "ajax_data.php",
+                    type: "POST",
+                    data: { email: email },
+                    success: function(response){
+                        $("#ajaxResult").html(response);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

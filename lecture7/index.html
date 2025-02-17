@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax POST with JQuery and PHP</title>
+    <script src="https://ajax.googleapis.com/ajax/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/caa" href="style.css">
+</head>
+<body>
+    <h2>testing Ajax Request with JQuery and PHP</h2>
+    <form>
+        <dif class ="box">
+            <label>First Name:</label> <input type="text" name = "firstName" id ="firstName" />
+        </dif>
+        <div class="box">
+            <label>Last Name:</label> <input type="text" name = "lastName" id
+        </div>
+    </form>
+
+    <div id="response"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#myForm").submit(function(event){
+                event.preventDefault();
+                var formData = $(this).serialize();
+                
+                $.ajax({
+                    url: "process.php",
+                    type: "POST",
+                    data: formData,
+                    success: function(response){
+                        $("#response").html(response);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
