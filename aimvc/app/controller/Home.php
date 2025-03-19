@@ -5,7 +5,7 @@ class Home{
 
     }
      // default method
-     public function index(){
+    public function index(){
         echo "this is home/index";
     }
 

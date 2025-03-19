@@ -1,11 +1,10 @@
 <?php
 class Project{
-    // constructor
+    //Constructor
     public function __construct(){
 
     }
-
-    // default method
+     // default method
     public function index(){
         echo "this is project/index";
     }
@@ -13,10 +12,9 @@ class Project{
     public function personal(){
         echo "this is project/personal";
     }
-
+    // menambahkan method global baru
     public function group(){
         echo "this is project/group";
     }
 }
-
 ?>

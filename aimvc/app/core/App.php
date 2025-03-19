@@ -9,25 +9,24 @@ class App {
     
     // Konstruktor untuk menginisialisasi controller, method, dan parameter default
     public function __construct() {
-        // Memanggil fungsi initDefaultController untuk menetapkan controller, method, dan parameter default
+        // Memanggil fungsi initDefaultController untuk menetapkan controller
         $this->initDefaultController("Home", "index", []);
         
         // Memanggil fungsi parseURL untuk mendapatkan URL yang diterima
         $url = $this->parseURL();
-        // var_dump($url);
+        //var_dump($url);
         
         // handle controller
-        if (file_exists('../app/controller/' . $url[0] . '.php')) {
+        if (!empty($url) && file_exists('../app/controller/' . $url[0] . '.php')) {
             // Mengubah nama controller
             $this->controller = $url[0];
             // Menghapus elemen index 0
             unset($url[0]);
-            // display array
-            //var_dump($url);
+            //var_dump($url)
         }
 
         // Memuat controller yang dipilih
-        require_once '../app/controller/' . $this->controller . '.php';
+        require_once '../app/controller/'.$this->controller.'.php';
         $this->controller = new $this->controller();
 
         // handle method
